@@ -1,0 +1,24 @@
+{
+  "name": "react-native-mapbox-navigation",
+  "version": "0.1.0",
+  "description": "Smart Mapbox turn-by-turn routing based on real-time traffic for React Native.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emin93/react-native-mapbox-navigation.git"
+  },
+  "keywords": [
+    "react-native",
+    "mapbox",
+    "navigation"
+  ],
+  "author": "Emin Khateeb <emin@emin.ch>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/emin93/react-native-mapbox-navigation/issues"
+  },
+  "homepage": "https://github.com/emin93/react-native-mapbox-navigation#readme"
+}
