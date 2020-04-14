@@ -41,8 +41,18 @@ public class NavigationManager extends SimpleViewManager<NavigationView> {
         return MapBuilder.of("onProgressChange", MapBuilder.of("registrationName", "onProgressChange"));
     }
 
+    @ReactProp(name = "origin")
+    public void setOrigin(TbtNavigationView view, @Nullable ReadableArray sources) {
+        if (sources == null) {
+            view.setOrigin(null);
+            return;
+        }
+
+        view.setOrigin(Point.fromLngLat(sources.getDouble(0), sources.getDouble(1)));
+    }
+
     @ReactProp(name = "destination")
-    public void setDestination(NavigationView view, @Nullable ReadableArray sources) {
+    public void setDestination(TbtNavigationView view, @Nullable ReadableArray sources) {
         if (sources == null) {
             view.setDestination(null);
             return;

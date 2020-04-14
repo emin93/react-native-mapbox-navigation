@@ -10,10 +10,6 @@ import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.mapbox.android.core.location.LocationEngine;
-import com.mapbox.android.core.location.LocationEngineCallback;
-import com.mapbox.android.core.location.LocationEngineProvider;
-import com.mapbox.android.core.location.LocationEngineResult;
 import com.mapbox.api.directions.v5.models.DirectionsResponse;
 import com.mapbox.api.directions.v5.models.DirectionsRoute;
 import com.mapbox.geojson.Point;
@@ -41,10 +37,9 @@ public class NavigationView extends NavigationView implements OnNavigationReadyC
     private ThemedReactContext context;
     private LifecycleEventListener lifecycleEventListener;
 
-    private LocationEngine locationEngine;
-
     private DirectionsRoute directionsRoute;
 
+    private Point origin = null;
     private Point destination = null;
     private boolean shouldSimulateRoute = false;
     private boolean isMuted = true;
@@ -55,7 +50,6 @@ public class NavigationView extends NavigationView implements OnNavigationReadyC
 
         this.context = context;
 
-        locationEngine = LocationEngineProvider.getBestLocationEngine(context);
         onCreate(null);
         initialize(this);
         onResume();
@@ -82,7 +76,7 @@ public class NavigationView extends NavigationView implements OnNavigationReadyC
 
     @Override
     public void onNavigationReady(boolean isRunning) {
-        fetchCurrentLocation();
+        fetchRoute();
     }
 
     @Override
@@ -104,9 +98,14 @@ public class NavigationView extends NavigationView implements OnNavigationReadyC
         return announcement;
     }
 
+    public void setOrigin(Point origin) {
+        this.origin = origin;
+        fetchRoute();
+    }
+
     public void setDestination(Point destination) {
         this.destination = destination;
-        fetchCurrentLocation();
+        fetchRoute();
     }
 
     public void setShouldSimulateRoute(boolean shouldSimulateRoute) {
@@ -126,31 +125,10 @@ public class NavigationView extends NavigationView implements OnNavigationReadyC
         lifecycleEventListener = null;
     }
 
-    @SuppressWarnings({"MissingPermission"})
-    private void fetchCurrentLocation() {
-        locationEngine.getLastLocation(new LocationEngineCallback<LocationEngineResult>() {
-            @Override
-            public void onSuccess(LocationEngineResult result) {
-                Location location = result.getLastLocation();
-
-                if (location == null) {
-                    return;
-                }
-
-                Point origin = Point.fromLngLat(location.getLongitude(), location.getLatitude());
-                fetchRoute(origin);
-            }
-
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-            }
-        });
-    }
-
-    private void fetchRoute(Point origin) {
+    private void fetchRoute() {
         String accessToken = Mapbox.getAccessToken();
 
-        if (accessToken == null || destination == null) {
+        if (accessToken == null || origin == null || destination == null) {
             return;
         }
 
