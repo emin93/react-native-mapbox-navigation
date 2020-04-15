@@ -6,18 +6,26 @@
 
 ## :star: Features
 
+- Simple installation and usage
+- Mutable speech announcements
+- Route simulation
+
+## :arrow_forward: Installation
+
+```sh
+npm i react-native-mapbox-navigation
+cd ios && pod install --repo-update
+```
+
+```xml
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+```
+
 ## :arrow_forward: Usage
 
-**Not yet ready to use. Please allow some time or help by contributing.**
-
-### Current project status:
-
-| Feature                             | Android | iOS |
-| ----------------------------------- | :-----: | --: |
-| Installation                        |   ❌    |  ❌ |
-| Navigate from origin to destination |   ✅    |  ✅ |
-| Mute/unmute speech announcements    |   ✅    |  ✅ |
-| Simulate route                      |   ✅    |  ✅ |
+```jsx
+<MapboxNavigation origin={[8.0, 46.0]} destination={[8.0, 46.0]} />
+```
 
 ## :computer: Contributing
 
