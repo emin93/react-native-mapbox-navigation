@@ -1,5 +1,5 @@
-import { NativeModules } from 'react-native';
+import { requireNativeComponent } from 'react-native';
 
-const { MapboxNavigation } = NativeModules;
+const MapboxNavigation = requireNativeComponent('MapboxNavigation');
 
 export default MapboxNavigation;

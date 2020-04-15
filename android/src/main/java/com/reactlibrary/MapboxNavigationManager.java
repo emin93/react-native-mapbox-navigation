@@ -1,17 +1,35 @@
 package com.reactlibrary;
 
+import androidx.annotation.NonNull;
+
+import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.common.MapBuilder;
+import com.facebook.react.uimanager.SimpleViewManager;
+import com.facebook.react.uimanager.ThemedReactContext;
+import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
+import com.mapbox.geojson.Point;
+import com.mapbox.mapboxsdk.Mapbox;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class MapboxNavigationManager extends SimpleViewManager<MapboxNavigationView> {
 
-    private final ReactApplicationContext reactContext;
+    ReactApplicationContext mCallerContext;
 
-    public MapboxNavigationModule(ReactApplicationContext reactContext) {
-        super(reactContext);
-        this.reactContext = reactContext;
+    public MapboxNavigationManager(ReactApplicationContext reactContext) {
+        mCallerContext = reactContext;
+        mCallerContext.runOnUiQueueThread(new Runnable() {
+            @Override
+            public void run() {
+                Mapbox.getInstance(mCallerContext, "pk.eyJ1IjoiZW1pbjkzIiwiYSI6ImNrOTFxenJscDAwamgzbm1za3Iya2k1bzgifQ.ub5B7UXS5o9tLyPfXwIyDA");
+            }
+        });
     }
 
     @Override
@@ -21,23 +39,23 @@ public class MapboxNavigationManager extends SimpleViewManager<MapboxNavigationV
 
     @NotNull
     @Override
-    public NavigationView createViewInstance(@Nonnull ThemedReactContext reactContext) {
-        return new NavigationView(reactContext);
+    public MapboxNavigationView createViewInstance(@Nonnull ThemedReactContext reactContext) {
+        return new MapboxNavigationView(reactContext);
     }
 
     @Override
-    public void onDropViewInstance(@NonNull NavigationView view) {
+    public void onDropViewInstance(@NonNull MapboxNavigationView view) {
         view.onDropViewInstance();
         super.onDropViewInstance(view);
     }
 
     @Override
-    public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
+    public Map getExportedCustomDirectEventTypeConstants() {
         return MapBuilder.of("onProgressChange", MapBuilder.of("registrationName", "onProgressChange"));
     }
 
     @ReactProp(name = "origin")
-    public void setOrigin(TbtNavigationView view, @Nullable ReadableArray sources) {
+    public void setOrigin(MapboxNavigationView view, @Nullable ReadableArray sources) {
         if (sources == null) {
             view.setOrigin(null);
             return;
@@ -47,7 +65,7 @@ public class MapboxNavigationManager extends SimpleViewManager<MapboxNavigationV
     }
 
     @ReactProp(name = "destination")
-    public void setDestination(TbtNavigationView view, @Nullable ReadableArray sources) {
+    public void setDestination(MapboxNavigationView view, @Nullable ReadableArray sources) {
         if (sources == null) {
             view.setDestination(null);
             return;
@@ -57,12 +75,12 @@ public class MapboxNavigationManager extends SimpleViewManager<MapboxNavigationV
     }
 
     @ReactProp(name = "shouldSimulateRoute")
-    public void setShouldSimulateRoute(NavigationView view, boolean shouldSimulateRoute) {
+    public void setShouldSimulateRoute(MapboxNavigationView view, boolean shouldSimulateRoute) {
         view.setShouldSimulateRoute(shouldSimulateRoute);
     }
 
     @ReactProp(name = "isMuted")
-    public void setIsMuted(NavigationView view, boolean isMuted) {
+    public void setIsMuted(MapboxNavigationView view, boolean isMuted) {
         view.setIsMuted(isMuted);
     }
 }

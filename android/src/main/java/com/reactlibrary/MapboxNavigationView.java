@@ -1,4 +1,4 @@
-package com.mapbox.navigation;
+package com.reactlibrary;
 
 import android.annotation.SuppressLint;
 import android.location.Location;
@@ -45,7 +45,7 @@ public class MapboxNavigationView extends NavigationView implements OnNavigation
     private boolean isMuted = true;
     private boolean isNavigating = false;
 
-    public NavigationView(ThemedReactContext context) {
+    public MapboxNavigationView(ThemedReactContext context) {
         super(Objects.requireNonNull(context.getCurrentActivity()));
 
         this.context = context;
@@ -57,17 +57,17 @@ public class MapboxNavigationView extends NavigationView implements OnNavigation
         lifecycleEventListener = new LifecycleEventListener() {
             @Override
             public void onHostResume() {
-                NavigationView.this.onResume();
+                MapboxNavigationView.this.onResume();
             }
 
             @Override
             public void onHostPause() {
-                NavigationView.this.onPause();
+                MapboxNavigationView.this.onPause();
             }
 
             @Override
             public void onHostDestroy() {
-                NavigationView.this.onDestroy();
+                MapboxNavigationView.this.onDestroy();
             }
         };
 

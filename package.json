@@ -1,7 +1,7 @@
 {
   "name": "react-native-mapbox-navigation",
   "title": "React Native Mapbox Navigation",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "Smart Mapbox turn-by-turn routing based on real-time traffic for React Native.",
   "main": "index.js",
   "scripts": {
@@ -32,8 +32,5 @@
     "react": "^16.8.1",
     "react-native": ">=0.60.0-rc.0 <1.0.x"
   },
-  "devDependencies": {
-    "react": "^16.9.0",
-    "react-native": "^0.61.5"
-  }
+  "devDependencies": {}
 }
