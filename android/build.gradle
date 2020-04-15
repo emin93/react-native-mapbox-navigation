@@ -68,11 +68,14 @@ repositories {
     }
     google()
     jcenter()
+    maven { url 'https://mapbox.bintray.com/mapbox' }
 }
 
 dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'  // From node_modules
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation:0.42.6'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.42.6'
 }
 
 def configureReactNativePom(def pom) {
