@@ -32,7 +32,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 @SuppressLint("ViewConstructor")
-public class NavigationView extends NavigationView implements OnNavigationReadyCallback, ProgressChangeListener, SpeechAnnouncementListener {
+public class MapboxNavigationView extends NavigationView implements OnNavigationReadyCallback, ProgressChangeListener, SpeechAnnouncementListener {
 
     private ThemedReactContext context;
     private LifecycleEventListener lifecycleEventListener;

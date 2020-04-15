@@ -1,27 +1,22 @@
-package com.mapbox.navigation;
+package com.reactlibrary;
 
-import androidx.annotation.NonNull;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.Callback;
 
-import com.facebook.react.bridge.ReadableArray;
-import com.facebook.react.common.MapBuilder;
-import com.facebook.react.uimanager.SimpleViewManager;
-import com.facebook.react.uimanager.ThemedReactContext;
-import com.facebook.react.uimanager.annotations.ReactProp;
-import com.mapbox.geojson.Point;
+public class MapboxNavigationManager extends SimpleViewManager<MapboxNavigationView> {
 
-import org.jetbrains.annotations.NotNull;
+    private final ReactApplicationContext reactContext;
 
-import java.util.Map;
+    public MapboxNavigationModule(ReactApplicationContext reactContext) {
+        super(reactContext);
+        this.reactContext = reactContext;
+    }
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-public class NavigationManager extends SimpleViewManager<NavigationView> {
-
-    @NotNull
     @Override
     public String getName() {
-        return "RNMapboxNavigation";
+        return "MapboxNavigation";
     }
 
     @NotNull
