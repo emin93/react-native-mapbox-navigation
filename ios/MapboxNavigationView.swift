@@ -2,8 +2,7 @@ import MapboxCoreNavigation
 import MapboxDirections
 import MapboxNavigation
 
-class TbtNavigationView: UIView, NavigationViewControllerDelegate {
-  var directionsRoute: Route?
+class MapboxNavigationView: UIView, NavigationViewControllerDelegate {
   var voiceController: CustomVoiceController?
   
   @objc var origin: NSArray = [] {

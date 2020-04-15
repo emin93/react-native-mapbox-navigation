@@ -1,7 +1,7 @@
-@objc(TbtNavigationManager)
-class TbtNavigationManager: RCTViewManager {
+@objc(MapboxNavigationManager)
+class MapboxNavigationManager: RCTViewManager {
   override func view() -> UIView! {
-    return TbtNavigationView();
+    return MapboxNavigationView();
   }
 
   override static func requiresMainQueueSetup() -> Bool {
