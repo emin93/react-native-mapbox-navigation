@@ -12,12 +12,12 @@
 
 ### Current project status:
 
-| Feature                                       | Android | iOS |
-| --------------------------------------------- | :-----: | --: |
-| Installation                                  |   ❌    |  ❌ |
-| Navigate to destination from current location |   ✅    |  ❌ |
-| Mute/unmute speech announcements              |   ✅    |  ❌ |
-| Simulate route                                |   ✅    |  ❌ |
+| Feature                             | Android | iOS |
+| ----------------------------------- | :-----: | --: |
+| Installation                        |   ❌    |  ❌ |
+| Navigate from origin to destination |   ✅    |  ✅ |
+| Mute/unmute speech announcements    |   ✅    |  ✅ |
+| Simulate route                      |   ✅    |  ✅ |
 
 ## :computer: Contributing
 
