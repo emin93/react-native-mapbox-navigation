@@ -1,5 +1,7 @@
 # 🗺️ React Native Mapbox Navigation
 
+> **IMPORTANT: This is still a Work in Progress. Not yet functional.**
+
 > Smart Mapbox turn-by-turn routing based on real-time traffic for React Native.
 
 ## :star: Features
