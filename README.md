@@ -1,3 +1,5 @@
+> **This library has been deprecated in favor of: https://github.com/homeeondemand/react-native-mapbox-navigation**
+
 # 🗺️ React Native Mapbox Navigation
 
 > **IMPORTANT: This is still a Work in Progress. Not yet functional.**
